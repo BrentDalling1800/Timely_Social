@@ -44,7 +44,7 @@ return [
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'timely'),
-            'username' => env('DB_USERNAME', 'timely_sociaL'),
+            'username' => env('DB_USERNAME', 'timely_social'),
             'password' => env('DB_PASSWORD', 'AKFY21ED'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
