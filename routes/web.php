@@ -19,4 +19,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('/dash', 'user@dashboard')->middleware('auth');
+Route::post('/user/post_submit', 'user@post_submit')->middleware('auth');
 Route::get('/logout', 'user@logout');
