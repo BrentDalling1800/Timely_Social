@@ -26,7 +26,7 @@ class user extends Controller
     public function logout() {
     	Auth::logout();
 
-    	redirect('/');
+    	redirect('/home');
     }
 
     public function post_submit(Request $request) {

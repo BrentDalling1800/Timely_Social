@@ -1,95 +1,62 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+@section('content')
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+@if(isset(Auth::user()->name))
+<script type="text/javascript">
+    window.location = "{{ url('/dash') }}";//here double curly bracket
+</script>
+@endif
 
-            .full-height {
-                height: 100vh;
-            }
+<style type="text/css">
+.navbar {
+  background-color: transparent;
+  transition: background-color 300ms ; 
+}
+.navbar.scrolled {
+  background-color: white !important;
+  transition: background-color 300ms ease-in-out;
+}
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+.navbar.scrolled .nav-link {
+  color:black;
+}
 
-            .position-ref {
-                position: relative;
-            }
+.navbar.scrolled .navbar-brand {
+  color: black;
+}
+</style>
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
 
-            .content {
-                text-align: center;
-            }
 
-            .title {
-                font-size: 84px;
-            }
+<div class="jumbotron d-flex flex-row align-items-center" style="height:100vh; margin-bottom: 0px; color: white; background-image: url('https://images.unsplash.com/photo-1518466287196-1ba82e3bb69b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5178806447c0b33ac9a15a305e0d5cdf&auto=format&fit=crop&w=1500&q=80'); background-size: cover; background-repeat: no-repeat; background-position: center; border-radius: 0px; padding: 0px!important;">
+  <div class="container" style="">
+    <h1 class="display-4" style="color: white;">Timely Social</h1>
+    <p class="lead">An Open Source, Secure and Private Social Network.</p>
+    <a href="#get_started" class="btn btn-outline-info">Get Started</a>
+  </div>
+</div>
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+@endsection
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+@section('js_scripts')
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+<script>
+$(function () {
+  $(document).scroll(function () {
+      var $nav = $(".navbar");
+      $nav.toggleClass('scrolled', $(this).scrollTop()  > $nav.height());
+      if($nav.hasClass('scrolled')) {
+        $nav.addClass('navbar-light');
+        $nav.removeClass('navbar-dark');
+      } else {
+        $nav.removeClass('navbar-light');
+      $nav.addClass('navbar-dark');
+      }
+    });
+});
+
+    </script>
+@endsection
